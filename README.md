@@ -1,5 +1,7 @@
 # Challenge 9 - Movie Explorer App
 
+> **Status implementasi:** Home, Detail, Favorites, Search, integrasi TMDB, layout responsif sesuai Figma, dan pengujian otomatis sudah dibuat. API key TMDB pribadi masih diperlukan untuk data asli. Baca [panduan menjalankan dan penjelasan kode](docs/IMPLEMENTATION.md), [catatan desain](docs/DESIGN.md), dan [hasil verifikasi](docs/VERIFICATION.md). Instruksi assignment asli di bawah tetap dipertahankan.
+
 Selamat datang di Challenge 9! Di assignment ini, kalian akan membangun sebuah aplikasi web Movie Explorer menggunakan React, TypeScript, dan berbagai modern tools yang sering digunakan di industri.
 
 ## Deskripsi Project
