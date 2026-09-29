@@ -1,42 +1,29 @@
-import './index.css';
+import { lazy, Suspense } from 'react';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { MotionConfig } from 'framer-motion';
+import Layout from '@/components/layout/Layout';
+import { ErrorBoundary } from '@/components/ErrorBoundary';
+import { MovieSkeletons } from '@/components/States';
+import TrailerDialog from '@/components/TrailerDialog';
 
-function App() {
-  // TODO: Setup routing dengan React Router
-  // TODO: Implement layout structure
-  // TODO: Add navigation between pages
+const HomePage = lazy(() => import('@/pages/HomePage'));
+const MovieDetailPage = lazy(() => import('@/pages/MovieDetailPage'));
+const FavoritesPage = lazy(() => import('@/pages/FavoritesPage'));
+const SearchPage = lazy(() => import('@/pages/SearchPage'));
+const NotFoundPage = lazy(() => import('@/pages/NotFoundPage'));
 
-  return (
-    <div className="min-h-screen bg-background">
-      <header className="border-b">
-        <div className="container mx-auto px-4 py-4">
-          <h1 className="text-2xl font-bold">Movie Explorer</h1>
-          {/* TODO: Add navigation menu */}
-        </div>
-      </header>
-
-      <main className="container mx-auto px-4 py-8">
-        <div className="text-center space-y-4">
-          <h2 className="text-4xl font-bold">Challenge 9 - Movie App</h2>
-          <p className="text-muted-foreground">
-            Mulai dengan membaca README.md untuk instruksi lengkap!
-          </p>
-
-          <div className="mt-8 p-6 border rounded-lg bg-card">
-            <h3 className="text-xl font-semibold mb-2">Langkah Pertama:</h3>
-            <ol className="text-left space-y-2 max-w-2xl mx-auto">
-              <li>1. Copy file .env.example menjadi .env</li>
-              <li>2. Daftar di TheMovieDB dan dapatkan API key</li>
-              <li>3. Isi VITE_TMDB_API_KEY di file .env</li>
-              <li>4. Jalankan npm install untuk menginstall dependencies</li>
-              <li>5. Mulai develop dengan npm run dev</li>
-            </ol>
-          </div>
-        </div>
-
-        {/* TODO: Replace this with your actual application routes and components */}
-      </main>
-    </div>
-  );
+export default function App() {
+  return <ErrorBoundary><MotionConfig reducedMotion="user"><BrowserRouter>
+    <Suspense fallback={<div className="page-container list-page"><MovieSkeletons /></div>}>
+      <Routes><Route element={<Layout />}>
+        <Route index element={<HomePage />} />
+        <Route path="movie/:id" element={<MovieDetailPage />} />
+        <Route path="favorites" element={<FavoritesPage />} />
+        <Route path="search" element={<SearchPage />} />
+        <Route path="*" element={<NotFoundPage />} />
+      </Route></Routes>
+    </Suspense>
+    <TrailerDialog />
+  </BrowserRouter></MotionConfig></ErrorBoundary>;
 }
 
-export default App;
