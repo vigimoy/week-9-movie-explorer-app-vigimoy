@@ -12,7 +12,9 @@ const queryClient = new QueryClient({
       staleTime: 5 * 60 * 1000,
       gcTime: 30 * 60 * 1000,
       refetchOnWindowFocus: false,
-      retry: (count, error) => !(error instanceof MovieApiError && [401, 404, 429].includes(error.status ?? 0)) && count < 1,
+      retry: (count, error) =>
+        !(error instanceof MovieApiError && [401, 404, 429].includes(error.status ?? 0)) &&
+        count < 1,
     },
   },
 });
@@ -20,8 +22,9 @@ createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <QueryClientProvider client={queryClient}>
       <App />
-      {import.meta.env.DEV && <ReactQueryDevtools initialIsOpen={false} />}
+      {import.meta.env.DEV && import.meta.env.VITE_SHOW_DEVTOOLS !== 'false' && (
+        <ReactQueryDevtools initialIsOpen={false} />
+      )}
     </QueryClientProvider>
   </StrictMode>,
 );
-

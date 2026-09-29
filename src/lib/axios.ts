@@ -22,14 +22,20 @@ api.interceptors.request.use((config) => {
   if (!isApiConfigured) throw new MovieApiError('Add your TMDB API key to explore movies.', 401);
   return config;
 });
-api.interceptors.response.use((response) => response, (error: unknown) => {
-  if (!axios.isAxiosError(error) || axios.isCancel(error)) return Promise.reject(error);
-  const status = error.response?.status;
-  const message = status === 401 ? 'Your TMDB credentials are invalid. Please check your API key.'
-    : status === 404 ? 'This movie could not be found.'
-    : status === 429 ? 'Too many requests. Please wait a moment and try again.'
-    : 'Unable to reach TMDB. Check your connection and try again.';
-  return Promise.reject(new MovieApiError(message, status));
-});
+api.interceptors.response.use(
+  (response) => response,
+  (error: unknown) => {
+    if (!axios.isAxiosError(error) || axios.isCancel(error)) return Promise.reject(error);
+    const status = error.response?.status;
+    const message =
+      status === 401
+        ? 'Your TMDB credentials are invalid. Please check your API key.'
+        : status === 404
+          ? 'This movie could not be found.'
+          : status === 429
+            ? 'Too many requests. Please wait a moment and try again.'
+            : 'Unable to reach TMDB. Check your connection and try again.';
+    return Promise.reject(new MovieApiError(message, status));
+  },
+);
 export default api;
-

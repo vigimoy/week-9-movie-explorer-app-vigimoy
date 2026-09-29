@@ -7,6 +7,7 @@ Folder ini untuk menyimpan komponen-komponen reusable aplikasi.
 Pisahkan komponen berdasarkan fungsinya:
 
 ### Feature Components
+
 - `MovieCard.tsx` - Card untuk menampilkan preview movie
 - `MovieGrid.tsx` - Grid layout untuk movies
 - `SearchBar.tsx` - Component pencarian
@@ -14,6 +15,7 @@ Pisahkan komponen berdasarkan fungsinya:
 - Dan komponen lainnya sesuai design
 
 ### Layout Components
+
 - `Navbar.tsx` - Navigation bar
 - `Footer.tsx` - Footer
 - `Layout.tsx` - Main layout wrapper

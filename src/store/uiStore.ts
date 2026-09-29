@@ -13,4 +13,3 @@ export const useUiStore = create<UiState>((set) => ({
   notify: (message) => set({ notification: { message, id: Date.now() } }),
   clearNotification: () => set({ notification: null }),
 }));
-

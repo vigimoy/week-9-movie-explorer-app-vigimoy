@@ -7,6 +7,7 @@ Folder ini untuk menyimpan komponen UI dari shadcn/ui dan Radix UI.
 Untuk menambahkan komponen dari shadcn/ui, ikuti langkah berikut:
 
 1. Buat file `components.json` di root project dengan konfigurasi:
+
 ```json
 {
   "$schema": "https://ui.shadcn.com/schema.json",
@@ -27,6 +28,7 @@ Untuk menambahkan komponen dari shadcn/ui, ikuti langkah berikut:
 ```
 
 2. Install komponen yang dibutuhkan dengan command:
+
 ```bash
 npx shadcn@latest add button
 npx shadcn@latest add card
@@ -39,6 +41,7 @@ npx shadcn@latest add input
 ## Komponen yang Mungkin Dibutuhkan
 
 Berdasarkan design Figma, pertimbangkan untuk menginstall:
+
 - Button
 - Card
 - Input

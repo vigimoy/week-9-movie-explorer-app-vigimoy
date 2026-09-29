@@ -13,17 +13,30 @@ const SearchPage = lazy(() => import('@/pages/SearchPage'));
 const NotFoundPage = lazy(() => import('@/pages/NotFoundPage'));
 
 export default function App() {
-  return <ErrorBoundary><MotionConfig reducedMotion="user"><BrowserRouter>
-    <Suspense fallback={<div className="page-container list-page"><MovieSkeletons /></div>}>
-      <Routes><Route element={<Layout />}>
-        <Route index element={<HomePage />} />
-        <Route path="movie/:id" element={<MovieDetailPage />} />
-        <Route path="favorites" element={<FavoritesPage />} />
-        <Route path="search" element={<SearchPage />} />
-        <Route path="*" element={<NotFoundPage />} />
-      </Route></Routes>
-    </Suspense>
-    <TrailerDialog />
-  </BrowserRouter></MotionConfig></ErrorBoundary>;
+  return (
+    <ErrorBoundary>
+      <MotionConfig reducedMotion="user">
+        <BrowserRouter>
+          <Suspense
+            fallback={
+              <div className="page-container list-page">
+                <MovieSkeletons />
+              </div>
+            }
+          >
+            <Routes>
+              <Route element={<Layout />}>
+                <Route index element={<HomePage />} />
+                <Route path="movie/:id" element={<MovieDetailPage />} />
+                <Route path="favorites" element={<FavoritesPage />} />
+                <Route path="search" element={<SearchPage />} />
+                <Route path="*" element={<NotFoundPage />} />
+              </Route>
+            </Routes>
+          </Suspense>
+          <TrailerDialog />
+        </BrowserRouter>
+      </MotionConfig>
+    </ErrorBoundary>
+  );
 }
-

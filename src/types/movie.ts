@@ -16,12 +16,24 @@ export interface MovieResponse {
   total_pages: number;
   total_results: number;
 }
-export interface Genre { id: number; name: string }
+export interface Genre {
+  id: number;
+  name: string;
+}
 export interface Person {
-  id: number; name: string; profile_path: string | null; character?: string; job?: string;
+  id: number;
+  name: string;
+  profile_path: string | null;
+  character?: string;
+  job?: string;
 }
 export interface Video {
-  id: string; key: string; name: string; site: string; type: string; official: boolean;
+  id: string;
+  key: string;
+  name: string;
+  site: string;
+  type: string;
+  official: boolean;
 }
 export interface MovieDetails extends Movie {
   genres: Genre[];
@@ -34,4 +46,3 @@ export interface MovieDetails extends Movie {
     results: { iso_3166_1: string; release_dates: { certification: string; type: number }[] }[];
   };
 }
-
