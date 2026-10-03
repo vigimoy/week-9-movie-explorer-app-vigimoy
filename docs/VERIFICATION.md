@@ -40,12 +40,25 @@ Home, detail, favorites, empty favorites, and search screenshots were compared w
 
 Playwright screenshots are written to ignored `test-results/` folders. Visual test data and imagery reproduce the reference films for stable inspection; they are never runtime substitutes for the TMDB catalogue.
 
+## Live TMDB verification — 3 October 2026
+
+A local API Read Access Token was configured in `.env`, which is ignored by Git. An additional Chrome browser session used real requests without interception and verified:
+
+- HTTP 200 responses for popular movies, genres, now-playing movies, movie details, and search.
+- Home content, loaded posters, movie detail navigation, and search results.
+- Adding a favorite, persistence after reload, removal, and the empty state.
+- Load More revealing cached results and then fetching now-playing page 2 with HTTP 200.
+- The trailer dialog opening a YouTube embed URL supplied by TMDB and closing with Escape.
+- No JavaScript exceptions during the main flow and no horizontal overflow at 393px.
+
+The deterministic test suite remains separate and does not send its placeholder credentials to TMDB.
+
 ## Limits and remaining manual checks
 
-No TMDB API key has been supplied. Live authentication, current movie responses, real YouTube playback, and real-network pagination still need a manual check after configuring credentials. Test video navigation is intercepted; passing the test verifies the player integration, not playback availability on YouTube.
+Real audiovisual YouTube playback has not been verified. The live check confirms the trailer URL and iframe integration only. The automated suite intercepts video navigation.
 
 Firefox, Safari, a physical mobile device, Lighthouse, deployment, and production hosting rewrites have not been verified. A static hosting provider must rewrite application routes to `index.html` for direct deep links.
 
-The app's favorites and empty states can be viewed without a key; live movie screens show setup instructions. No mock mode is enabled in production.
+The app's favorites and empty states can be viewed without credentials; movie screens show setup instructions when credentials are absent. The current local checkout has working credentials. No mock mode is enabled in production.
 
 No push, merge to main, or deployment was performed.

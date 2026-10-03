@@ -79,9 +79,11 @@ $env:TMP = 'D:\codex-cache\tmp'
 npm run test:e2e
 ```
 
-## Still needs a real API key
+## Live verification and remaining checks
 
-Live TMDB authentication, current catalogue data, real trailer playback, and an end-to-end production connection cannot be verified without credentials. Browser tests cover the user flows using deterministic TMDB-shaped responses. Firefox/Safari and deployed hosting have not been tested. Deployment/push are not part of the local commits.
+On 3 October 2026, a local API Read Access Token was configured in the ignored `.env`. Live browser checks passed for the catalogue, genres, detail data, search, image loading, favorites persistence, and a second page of releases. The trailer dialog loaded a YouTube embed URL returned by TMDB; actual audiovisual playback has not been verified. Credentials are not included in Git, so a new checkout still needs its own configuration.
+
+Automated browser tests continue to use deterministic TMDB-shaped responses. Firefox/Safari and deployed hosting have not been tested. Deployment/push are not part of the local commits. See `VERIFICATION.md` for the live-check scope.
 
 ## References
 

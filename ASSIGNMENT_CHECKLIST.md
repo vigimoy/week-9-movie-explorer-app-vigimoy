@@ -1,14 +1,14 @@
 # Assignment Checklist
 
-> Implementasi dan alur browser diverifikasi dengan respons TMDB simulasi. Integrasi langsung dengan TMDB masih menunggu API key pribadi. Rincian dan batas verifikasi ada di docs/VERIFICATION.md.
+> Pengujian otomatis menggunakan respons TMDB simulasi. Integrasi langsung dengan TMDB dan alur browser dengan data asli juga sudah diverifikasi pada 3 Oktober 2026. Rincian dan batas verifikasi ada di docs/VERIFICATION.md.
 
 Gunakan checklist ini untuk memastikan semua requirement sudah terpenuhi.
 
 ## Setup & Configuration
 
 - [x] Install semua dependencies
-- [ ] Setup environment variables (.env)
-- [ ] TMDB API key berfungsi
+- [x] Setup environment variables (.env)
+- [x] TMDB API key berfungsi (menggunakan API Read Access Token)
 - [x] Development server berjalan tanpa error
 - [x] Path aliases (`@/...`) berfungsi
 
